@@ -23,8 +23,8 @@
         </div>
         <div class="math">
             Step:
-            <button class="button minus">-2</button>
-            <button class="button plus">+2</button>
+            <button class="button minus" v-on:click="decrementStepHandler">-2</button>
+            <button class="button plus" v-on:click="incrementStepHandler">+2</button>
         </div>
     </section>
     <hr>
@@ -49,15 +49,27 @@
             el: '.vue-app',
             data: {
                 counter: 1,
-                step: 2
+                step: 2,
             },
             methods: {
-                incrementCounterHandler() {},
-                decrementCounterHandler() {}
+                incrementCounterHandler() {
+                    this.counter--;
+                },
+                decrementCounterHandler() {
+                    this.counter++;
+                },
+                incrementStepHandler() {
+                    this.step = this.step + 2;
+                },
+                decrementStepHandler() {
+                    this.step = this.step - 2;
+                }
                 //...
             },
             computed: {
-                sum() {}
+                sum() {
+                    return this.counter + this.step;
+                }
             }
         })
     </script>
